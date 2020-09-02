@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 
 import { HomePage } from './pages';
+require('dotenv').config();
 
 const ROUTES: Array<RouteProps> = [
   {

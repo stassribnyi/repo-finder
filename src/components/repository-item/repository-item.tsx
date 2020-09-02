@@ -1,11 +1,6 @@
 import React from 'react';
 
-import {
-  Link,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-} from '@material-ui/core';
+import { Link, ListItemAvatar, ListItemText } from '@material-ui/core';
 import {
   BookOutlined,
   RestaurantRounded,

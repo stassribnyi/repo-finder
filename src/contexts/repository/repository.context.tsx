@@ -16,8 +16,8 @@ export const withRepositories = (
   const { isLoading, repositories, searchRepositories } = useRepositories();
 
   const search: RepositoryContextState['search'] = useCallback(
-    async (phrase) => {
-      await searchRepositories(phrase);
+    (phrase) => {
+      searchRepositories(phrase);
     },
     [searchRepositories]
   );

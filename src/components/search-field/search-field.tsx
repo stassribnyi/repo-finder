@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { Button, InputAdornment, TextField } from '@material-ui/core';
+import { InputAdornment } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
 
 import { SearchFieldProps } from './search-field.types';
