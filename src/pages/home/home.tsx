@@ -1,7 +1,10 @@
 import React, { useCallback } from 'react';
 
 import { useRepositoriesContext, withRepositories } from '../../contexts';
+
+import { RepositoryItem } from '../../components';
 import { BaseLayout } from '../../layouts';
+import { List } from '@material-ui/core';
 
 export const HomePage = withRepositories(() => {
   const { repositories, search } = useRepositoriesContext();
@@ -14,9 +17,11 @@ export const HomePage = withRepositories(() => {
         Learn React
       </a>
       <button onClick={handleSearch}>Search react</button>
-      {repositories.map((x) => (
-        <span>{x.uniqueName}</span>
-      ))}
+      <List>
+        {repositories.map((x) => (
+          <RepositoryItem {...x} />
+        ))}
+      </List>
     </BaseLayout>
   );
 });

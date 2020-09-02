@@ -1,16 +1,7 @@
 import { useCallback, useState } from 'react';
 
 import { MOCK_REPOS } from './mockRepos';
-
-export type Repository = Readonly<{
-  description: string;
-  name: string;
-  stars: number;
-  topics: string[];
-  uniqueName: string;
-  url: string;
-  watchers: number;
-}>;
+import { Repository } from '../types';
 
 type UseRepositoriesResult = Readonly<{
   isLoading: boolean;
@@ -33,7 +24,7 @@ export const useRepositories = (): UseRepositoriesResult => {
           setRepositories(MOCK_REPOS);
           setIsLoading(false);
           resolve(MOCK_REPOS);
-        }, 2000);
+        }, 111);
       }),
     []
   );

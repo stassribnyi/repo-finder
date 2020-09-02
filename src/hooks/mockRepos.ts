@@ -1,9 +1,12 @@
-export const MOCK_REPOS = [
+import { Repository } from '../types';
+
+export const MOCK_REPOS: Array<Repository> = [
   {
     uniqueName: 'facebook/react',
     name: 'react',
     stars: 155165,
     watchers: 6690,
+    forks: 6690,
     url: 'https://github.com/facebook/react',
     description:
       'A declarative, efficient, and flexible JavaScript library for building user interfaces.',
@@ -15,6 +18,7 @@ export const MOCK_REPOS = [
     stars: 16882,
     watchers: 248,
     url: 'https://github.com/typescript-cheatsheets/react',
+    forks: 6690,
     description:
       'Cheatsheets for experienced React developers getting started with TypeScript',
     topics: [],
@@ -25,6 +29,7 @@ export const MOCK_REPOS = [
     stars: 3839,
     watchers: 190,
     url: 'https://github.com/duxianwei520/react',
+    forks: 6690,
     description: ' React+webpack+redux+ant design+axios+less全家桶后台管理框架',
     topics: [
       'react',
@@ -43,6 +48,7 @@ export const MOCK_REPOS = [
     stars: 964,
     watchers: 39,
     url: 'https://github.com/discountry/react',
+    forks: 6690,
     description: 'React docs in Chinese | React 中文文档翻译',
     topics: ['react', 'docs'],
   },
@@ -51,12 +57,14 @@ export const MOCK_REPOS = [
     name: 'react',
     stars: 672,
     watchers: 41,
+    forks: 6690,
     url: 'https://github.com/Cathy0807/react',
     description: '京东首页构建',
     topics: [],
   },
   {
     uniqueName: 'react-redux-antd-es6/react',
+    forks: 6690,
     name: 'react',
     stars: 737,
     watchers: 47,
@@ -66,6 +74,7 @@ export const MOCK_REPOS = [
   },
   {
     uniqueName: 'HackYourFuture/React',
+    forks: 6690,
     name: 'React',
     stars: 94,
     watchers: 23,
@@ -76,6 +85,7 @@ export const MOCK_REPOS = [
   },
   {
     uniqueName: 'ReactiveCocoa/ReactiveCocoa',
+    forks: 6690,
     name: 'ReactiveCocoa',
     stars: 19859,
     watchers: 874,
@@ -86,6 +96,7 @@ export const MOCK_REPOS = [
   },
   {
     uniqueName: 'facebook/react-native',
+    forks: 6690,
     name: 'react-native',
     stars: 89828,
     watchers: 3737,
@@ -95,6 +106,7 @@ export const MOCK_REPOS = [
   },
   {
     uniqueName: 'geist-org/react',
+    forks: 6690,
     name: 'react',
     stars: 987,
     watchers: 18,

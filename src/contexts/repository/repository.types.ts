@@ -1,4 +1,4 @@
-import { Repository } from '../../hooks';
+import { Repository } from '../../types';
 
 export type RepositoryContextState = Readonly<{
   isLoading: boolean;
