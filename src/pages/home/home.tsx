@@ -2,24 +2,28 @@ import React, { useCallback } from 'react';
 
 import { useRepositoriesContext, withRepositories } from '../../contexts';
 
-import { RepositoryItem } from '../../components';
+import { RepositoryItem, SearchField } from '../../components';
+import { List, Typography } from '@material-ui/core';
 import { BaseLayout } from '../../layouts';
-import { List } from '@material-ui/core';
 
 export const HomePage = withRepositories(() => {
   const { repositories, search } = useRepositoriesContext();
 
-  const handleSearch = useCallback(() => search('react'), [search]);
+  const handleSearch = useCallback((phrase) => search(phrase), [search]);
 
   return (
     <BaseLayout>
-      <a href='https://reactjs.org' target='_blank' rel='noopener noreferrer'>
-        Learn React
-      </a>
-      <button onClick={handleSearch}>Search react</button>
+      <Typography align='center' variant='h4' gutterBottom>
+        Repo finder
+      </Typography>
+      <SearchField
+        placeholder='Search  phrase, for ex: react'
+        searchText='Search'
+        onSearch={handleSearch}
+      />
       <List>
-        {repositories.map((x) => (
-          <RepositoryItem {...x} />
+        {repositories.map((repository) => (
+          <RepositoryItem {...repository} />
         ))}
       </List>
     </BaseLayout>
