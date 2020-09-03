@@ -3,7 +3,9 @@ schema:
       headers:
         Authorization:
           - Bearer ${REACT_APP_AUTH_TOKEN}
-documents: './src/**/*.ts'
+documents:
+  - './src/**/*.ts'
+  - 'src/**/*.graphql'
 overwrite: true
 generates:
   ./src/generated/graphql.tsx:
