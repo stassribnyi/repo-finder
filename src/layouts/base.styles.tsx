@@ -7,7 +7,7 @@ const GridContainer: React.FC<GridProps> = (props) => (
   <Grid container direction='column' alignItems='center' {...props} />
 );
 const Content: React.FC = (props) => (
-  <GridContainer md={6} sm={8} xs={12} {...props} />
+  <GridContainer item md={6} sm={8} xs={12} {...props} />
 );
 
 const Container = styled(GridContainer)`

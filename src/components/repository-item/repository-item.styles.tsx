@@ -3,18 +3,13 @@ import styled, { css } from 'styled-components';
 
 import {
   Avatar,
-  Chip,
-  Grid,
-  GridProps,
+  ChipProps,
   Typography,
+  Chip as MuiChip,
+  Divider as MuiDivider,
   ListItem as MuiListItem,
 } from '@material-ui/core';
 
-const Container: React.FC<GridProps> = (props) => <Grid container {...props} />;
-const ItemContainer: React.FC = (props) => <Container item {...props} />;
-const DetailsContainer: React.FC = (props) => (
-  <Container direction='column' {...props} />
-);
 const RoundedAvatar: React.FC = (props) => (
   <Avatar variant='rounded' {...props} />
 );
@@ -24,21 +19,29 @@ const Description: React.FC = (props) => (
 const ListItem: React.FC = (props) => (
   <MuiListItem alignItems='flex-start' {...props} />
 );
+const Chip: React.FC<ChipProps> = (props) => (
+  <MuiChip component='span' {...props} />
+);
+const Divider: React.FC = (props) => (
+  <MuiDivider variant='inset' component='li' />
+);
 
 const RepositoryAvatar = styled(RoundedAvatar)`
   background-color: ${({ theme }) => theme.palette.secondary.light};
 `;
 
-const ChipWithoutBorder = styled(Chip)`
+const ChipWithoutBorder: React.FC<ChipProps> = styled(Chip)`
   border: none;
   background: transparent;
 `;
 
-const DetailsItem = styled(ItemContainer)`
+const InfoRow = styled.span`
+  display: flex;
+  flex-wrap: wrap;
   margin-bottom: ${({ theme }) => theme.spacing(1)}px;
 `;
 
-const TagChip = styled(Chip)`
+const TagChip: React.FC<ChipProps> = styled(Chip)`
   ${({ theme }) => css`
     background-color: ${theme.palette.info.light};
     color: ${theme.palette.info.contrastText};
@@ -52,10 +55,9 @@ const TagChip = styled(Chip)`
 
 export const Styled = {
   ChipWithoutBorder,
-  Container,
   Description,
-  DetailsContainer,
-  DetailsItem,
+  Divider,
+  InfoRow,
   ListItem,
   RepositoryAvatar,
   TagChip,

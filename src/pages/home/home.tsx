@@ -24,8 +24,12 @@ export const HomePage = withRepositories(() => {
         onSearch={handleSearch}
       />
       <List>
-        {repositories.map((repository) => (
-          <RepositoryItem {...repository} />
+        {repositories.map((repository, idx) => (
+          <RepositoryItem
+            key={idx}
+            showDivider={idx !== repositories.length - 1}
+            {...repository}
+          />
         ))}
       </List>
     </BaseLayout>
