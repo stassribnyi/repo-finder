@@ -55,12 +55,7 @@ export const SearchField: React.FC<SearchFieldProps> = ({
         onKeyPress={handleEnterPress}
         onChange={handleSearchChange}
       />
-      <Styled.SearchButton
-        variant='contained'
-        color='primary'
-        disabled={disabled}
-        onClick={handleSearch}
-      >
+      <Styled.SearchButton disabled={disabled} onClick={handleSearch}>
         Search
       </Styled.SearchButton>
     </Styled.Container>

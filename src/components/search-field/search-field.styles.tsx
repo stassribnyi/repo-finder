@@ -13,7 +13,7 @@ const GridContainer: React.FC<GridProps> = (props) => (
   <Grid container {...props} />
 );
 const SearchButton: React.FC<ButtonProps> = (props) => (
-  <Button variant='contained' color='primary' {...props} />
+  <Button color='primary' size='small' variant='contained' {...props} />
 );
 
 const Container = styled(GridContainer)`

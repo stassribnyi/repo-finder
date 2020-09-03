@@ -6,9 +6,10 @@ import {
   Route,
   RouteProps,
 } from 'react-router-dom';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 import { HomePage } from './pages';
-require('dotenv').config();
+import { CONFIG } from './config';
 
 const ROUTES: Array<RouteProps> = [
   {
@@ -17,15 +18,24 @@ const ROUTES: Array<RouteProps> = [
   },
 ];
 
+const client = new ApolloClient({
+  uri: CONFIG.graphUri,
+  cache: new InMemoryCache(),
+  connectToDevTools: CONFIG.isDevelopment,
+  headers: { Authorization: `Bearer ${CONFIG.authToken}` },
+});
+
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Switch>
-        {ROUTES.map((route, idx) => (
-          <Route key={idx} {...route} />
-        ))}
-      </Switch>
-    </Router>
+    <ApolloProvider client={client}>
+      <Router>
+        <Switch>
+          {ROUTES.map((route, idx) => (
+            <Route key={idx} {...route} />
+          ))}
+        </Switch>
+      </Router>
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

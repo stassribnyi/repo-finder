@@ -3,22 +3,24 @@ import React, { useCallback } from 'react';
 import { useRepositoriesContext, withRepositories } from '../../contexts';
 
 import { RepositoryItem, SearchField } from '../../components';
-import { List, Typography } from '@material-ui/core';
+import { List } from '@material-ui/core';
 import { BaseLayout } from '../../layouts';
 
+import { Styled } from './home.styles';
+
 export const HomePage = withRepositories(() => {
-  const { repositories, search } = useRepositoriesContext();
+  const { isLoading, repositories, search } = useRepositoriesContext();
 
   const handleSearch = useCallback((phrase) => search(phrase), [search]);
 
   return (
     <BaseLayout>
-      <Typography align='center' variant='h4' gutterBottom>
-        Repo finder
-      </Typography>
+      <Styled.Title>Repo finder</Styled.Title>
       <SearchField
-        placeholder='Search  phrase, for ex: react'
+        value='react'
         searchText='Search'
+        placeholder='ex: react'
+        disabled={isLoading}
         onSearch={handleSearch}
       />
       <List>
