@@ -28,7 +28,7 @@ const client = new ApolloClient({
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <Router>
+      <Router basename='/'>
         <Switch>
           {ROUTES.map((route, idx) => (
             <Route key={idx} {...route} />

@@ -1,0 +1,7 @@
+.*
+!.env
+docker-compose.yml
+build*
+kubernates*
+node_modules*
+README.md

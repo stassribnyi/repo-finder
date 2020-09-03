@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  repo_finder_server:
+    container_name: repo_finder_server
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+      target: dev
+      args:
+        NODE_ENV: development
+        REACT_APP_GRAPH_URI: ${REACT_APP_GRAPH_URI}
+        REACT_APP_AUTH_TOKEN: ${REACT_APP_AUTH_TOKEN}
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 3001:80
