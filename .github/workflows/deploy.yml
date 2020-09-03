@@ -1,0 +1,43 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+        with:
+          persist-credentials: false
+
+      - name: Set .env AUTH_TOKEN 🔑
+        uses: TickX/var-to-dotenv@v1.1.3
+        with:
+          key: 'REACT_APP_AUTH_TOKEN'
+          value: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Set .env PUBLIC_URL 🚩
+        uses: TickX/var-to-dotenv@v1.1.3
+        with:
+          key: 'PUBLIC_URL'
+          value: https://stassribnyi.github.io/repo-finder
+
+      - name: Set .env REACT_APP_GRAPH_URI ⚡
+        uses: TickX/var-to-dotenv@v1.1.3
+        with:
+          key: 'REACT_APP_GRAPH_URI'
+          value: https://api.github.com/graphql
+
+      - name: Install and Build 🔧
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.5.9
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
