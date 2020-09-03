@@ -1,37 +1,52 @@
-import React, { useCallback } from 'react';
+import React, { useEffect } from 'react';
 
 import { useRepositoriesContext, withRepositories } from '../../contexts';
 
-import { RepositoryItem, SearchField } from '../../components';
-import { List } from '@material-ui/core';
+import { ProgressWrapper, RepositoryItem } from '../../components';
+import { List, TablePagination } from '@material-ui/core';
 import { BaseLayout } from '../../layouts';
 
 import { Styled } from './home.styles';
 
-export const HomePage = withRepositories(() => {
-  const { isLoading, repositories, search } = useRepositoriesContext();
+const HomePage: React.FC = () => {
+  const {
+    isLoading,
+    items,
+    pagination,
+    searchValue,
+    searchRepos,
+  } = useRepositoriesContext();
 
-  const handleSearch = useCallback((phrase) => search(phrase), [search]);
+  const hasRepositories = !!items.length;
+
+  useEffect(() => {
+    searchRepos('vue');
+  }, [searchRepos]);
 
   return (
     <BaseLayout>
       <Styled.Title>Repo finder</Styled.Title>
-      <SearchField
-        value='react'
+      <Styled.SearchField
+        value={searchValue}
         searchText='Search'
         placeholder='ex: react'
         disabled={isLoading}
-        onSearch={handleSearch}
+        onSearch={searchRepos}
       />
-      <List>
-        {repositories.map((repository, idx) => (
-          <RepositoryItem
-            key={idx}
-            showDivider={idx !== repositories.length - 1}
-            {...repository}
-          />
-        ))}
-      </List>
+      <ProgressWrapper isLoading={isLoading} showContent={hasRepositories}>
+        <List>
+          {items.map((repository, idx) => (
+            <RepositoryItem
+              key={idx}
+              showDivider={idx !== items.length - 1}
+              {...repository}
+            />
+          ))}
+        </List>
+        {hasRepositories && <TablePagination component='div' {...pagination} />}
+      </ProgressWrapper>
     </BaseLayout>
   );
-});
+};
+
+export default withRepositories(HomePage);

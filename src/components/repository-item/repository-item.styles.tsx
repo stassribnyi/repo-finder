@@ -22,9 +22,7 @@ const ListItem: React.FC = (props) => (
 const Chip: React.FC<ChipProps> = (props) => (
   <MuiChip component='span' {...props} />
 );
-const Divider: React.FC = (props) => (
-  <MuiDivider variant='inset' component='li' />
-);
+const Divider: React.FC = () => <MuiDivider variant='inset' component='li' />;
 
 const RepositoryAvatar = styled(RoundedAvatar)`
   background-color: ${({ theme }) => theme.palette.secondary.light};

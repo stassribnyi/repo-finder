@@ -4,53 +4,90 @@ import { Repository } from '../types';
 import {
   useSearchRepositoriesLazyQuery,
   SearchRepositoriesQuery,
+  SearchRepositoriesQueryVariables,
 } from '../generated/graphql';
 
 type UseRepositoriesResult = Readonly<{
   isLoading: boolean;
-  repositories: Array<Repository>;
-  searchRepositories: (phrase: string) => void;
+  items: Array<Repository>;
+  itemsCount: number;
+  pageInfo: SearchRepositoriesQuery['search']['pageInfo'];
+  searchRepos: (params: SearchRepositoriesQueryVariables) => void;
+  searchMoreRepos: (params: SearchRepositoriesQueryVariables) => void;
 }>;
 
-// TODO: Fix types
 const mapResponseToRepository = (
   response?: SearchRepositoriesQuery['search']
-): Array<Repository> =>
-  (response?.nodes
-    ?.map(
-      (n) =>
-        n && {
-          uniqueName: n.owner.login + '/' + n.name,
-          name: n.name,
-          stars: n.stargazers.totalCount,
-          watchers: n.watchers.totalCount,
-          forks: n?.forks.totalCount || 0,
-          url: n.url,
-          description: n.description,
-          topics:
-            n.repositoryTopics?.edges?.map((e) => e?.node?.topic.name) || [],
-        }
-    )
-    .filter(Boolean) || []) as Array<Repository>;
+): Array<Repository> => {
+  if (!response?.edges?.length) {
+    return [];
+  }
+
+  return response.edges.reduce((result, repoEdge) => {
+    if (!repoEdge?.node) {
+      return result;
+    }
+
+    const { node } = repoEdge;
+
+    const description = node.description || '';
+    const uniqueName = `${node.owner.login}/${node.name}`;
+
+    const topics =
+      node.repositoryTopics?.edges?.reduce(
+        (topicResult, topicEdge) => [
+          ...topicResult,
+          topicEdge?.node?.topic.name || '',
+        ],
+        [] as Array<string>
+      ) || [];
+
+    return [
+      ...result,
+      {
+        topics,
+        uniqueName,
+        description,
+        url: node.url,
+        forks: node.forks.totalCount,
+        stars: node.stargazers.totalCount,
+        watchers: node.watchers.totalCount,
+      },
+    ];
+  }, [] as Array<Repository>);
+};
 
 export const useRepositories = (): UseRepositoriesResult => {
   const [
     searchLazyQuery,
-    { loading: isLoading, data },
-  ] = useSearchRepositoriesLazyQuery();
+    { loading: isLoading, data, fetchMore },
+  ] = useSearchRepositoriesLazyQuery({ notifyOnNetworkStatusChange: true });
 
-  const searchRepositories: UseRepositoriesResult['searchRepositories'] = useCallback(
-    (query) => searchLazyQuery({ variables: { query } }),
+  const searchRepos: UseRepositoriesResult['searchRepos'] = useCallback(
+    (params) => searchLazyQuery({ variables: { ...params } }),
     [searchLazyQuery]
   );
 
-  const repositories = useMemo(() => mapResponseToRepository(data?.search), [
-    data,
-  ]);
+  const searchMoreRepos: UseRepositoriesResult['searchRepos'] = useCallback(
+    (params) =>
+      fetchMore?.({
+        variables: { ...params },
+        updateQuery: (prev, { fetchMoreResult }) => fetchMoreResult || prev,
+      }),
+    [fetchMore]
+  );
+
+  const items = useMemo(() => mapResponseToRepository(data?.search), [data]);
+
+  const itemsCount = data?.search.repositoryCount || 0;
+  const pageInfo = data?.search.pageInfo || {};
 
   return {
     isLoading,
-    repositories,
-    searchRepositories,
+    items,
+    itemsCount,
+    pageInfo,
+    searchRepos,
+    searchMoreRepos,
   };
 };

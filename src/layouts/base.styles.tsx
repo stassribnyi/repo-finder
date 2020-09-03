@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Grid, GridProps } from '@material-ui/core';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const GridContainer: React.FC<GridProps> = (props) => (
   <Grid container direction='column' alignItems='center' {...props} />
@@ -11,7 +11,10 @@ const Content: React.FC = (props) => (
 );
 
 const Container = styled(GridContainer)`
-  padding-top: ${({ theme }) => theme.spacing(2)}px;
+  ${({ theme }) => css`
+    margin-top: ${theme.spacing(6)}px;
+    margin-bottom: ${theme.spacing(6)}px;
+  `};
 `;
 
 export const Styled = {

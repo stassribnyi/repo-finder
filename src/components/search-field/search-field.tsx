@@ -11,6 +11,7 @@ export const SearchField: React.FC<SearchFieldProps> = ({
   searchText,
   value,
   onSearch,
+  className,
   ...props
 }) => {
   const [searchValue, setSearchValue] = useState<string | undefined>(value);
@@ -41,7 +42,7 @@ export const SearchField: React.FC<SearchFieldProps> = ({
   );
 
   return (
-    <Styled.Container>
+    <Styled.Container className={className}>
       <Styled.SearchField
         value={searchValue || ''}
         InputProps={{

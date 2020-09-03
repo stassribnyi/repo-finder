@@ -1,7 +1,9 @@
-import { Repository } from '../../types';
+import { Pagination, Repository } from '../../types';
 
-export type RepositoryContextState = Readonly<{
+export type RepositoryContextState = {
   isLoading: boolean;
-  repositories: Array<Repository>;
-  search: (phrase: string) => void;
-}>;
+  items: Array<Repository>;
+  searchRepos: (phrase: string) => void;
+  pagination: Pagination;
+  searchValue: string;
+};
