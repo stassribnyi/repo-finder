@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "https://stassribnyi.github.io/repo-finder/static/js/main.d62f97e2.chunk.js",
-    "main.js.map": "https://stassribnyi.github.io/repo-finder/static/js/main.d62f97e2.chunk.js.map",
+    "main.js": "https://stassribnyi.github.io/repo-finder/static/js/main.97bcdb9a.chunk.js",
+    "main.js.map": "https://stassribnyi.github.io/repo-finder/static/js/main.97bcdb9a.chunk.js.map",
     "runtime-main.js": "https://stassribnyi.github.io/repo-finder/static/js/runtime-main.011d493e.js",
     "runtime-main.js.map": "https://stassribnyi.github.io/repo-finder/static/js/runtime-main.011d493e.js.map",
-    "static/js/2.55f28df4.chunk.js": "https://stassribnyi.github.io/repo-finder/static/js/2.55f28df4.chunk.js",
-    "static/js/2.55f28df4.chunk.js.map": "https://stassribnyi.github.io/repo-finder/static/js/2.55f28df4.chunk.js.map",
+    "static/js/2.8f50959e.chunk.js": "https://stassribnyi.github.io/repo-finder/static/js/2.8f50959e.chunk.js",
+    "static/js/2.8f50959e.chunk.js.map": "https://stassribnyi.github.io/repo-finder/static/js/2.8f50959e.chunk.js.map",
     "index.html": "https://stassribnyi.github.io/repo-finder/index.html",
-    "precache-manifest.f94df3c4907dda1eb4fb11cce1ca0223.js": "https://stassribnyi.github.io/repo-finder/precache-manifest.f94df3c4907dda1eb4fb11cce1ca0223.js",
+    "precache-manifest.a838a0f8dc89c76e198fec6031886489.js": "https://stassribnyi.github.io/repo-finder/precache-manifest.a838a0f8dc89c76e198fec6031886489.js",
     "service-worker.js": "https://stassribnyi.github.io/repo-finder/service-worker.js",
-    "static/js/2.55f28df4.chunk.js.LICENSE.txt": "https://stassribnyi.github.io/repo-finder/static/js/2.55f28df4.chunk.js.LICENSE.txt"
+    "static/js/2.8f50959e.chunk.js.LICENSE.txt": "https://stassribnyi.github.io/repo-finder/static/js/2.8f50959e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.011d493e.js",
-    "static/js/2.55f28df4.chunk.js",
-    "static/js/main.d62f97e2.chunk.js"
+    "static/js/2.8f50959e.chunk.js",
+    "static/js/main.97bcdb9a.chunk.js"
   ]
 }
