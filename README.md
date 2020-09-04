@@ -1,4 +1,4 @@
-# Repo finder
+# Repo finder ([Demo](https://stassribnyi.github.io/repo-finder))
 
 ## Run with Docker:
 
