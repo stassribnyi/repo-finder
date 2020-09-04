@@ -2,11 +2,20 @@ import React, { useEffect } from 'react';
 
 import { useRepositoriesContext, withRepositories } from '../../contexts';
 
+import { AppBar, List, TablePaginationProps, Toolbar } from '@material-ui/core';
+import { GitHub } from '@material-ui/icons';
+
 import { ProgressWrapper, RepositoryItem } from '../../components';
-import { List, TablePagination } from '@material-ui/core';
 import { BaseLayout } from '../../layouts';
 
 import { Styled } from './home.styles';
+import { abbreviateNumber } from '../../utils';
+
+const formatLabelDisplayedRows: TablePaginationProps['labelDisplayedRows'] = ({
+  from,
+  to,
+  count,
+}) => `${from}-${to} of ${abbreviateNumber(count)}`;
 
 const HomePage: React.FC = () => {
   const {
@@ -25,25 +34,40 @@ const HomePage: React.FC = () => {
 
   return (
     <BaseLayout>
-      <Styled.Title>Repo finder</Styled.Title>
-      <Styled.SearchField
-        value={searchValue}
-        searchText='Search'
-        placeholder='ex: react'
-        disabled={isLoading}
-        onSearch={searchRepos}
-      />
+      <AppBar position='static'>
+        <Toolbar>
+          <Styled.IconButton aria-label='menu'>
+            <GitHub />
+          </Styled.IconButton>
+          <Styled.Title>Repo finder</Styled.Title>
+          <Styled.SearchField
+            placeholder='Search…'
+            value={searchValue}
+            disabled={isLoading}
+            onSearch={searchRepos}
+          />
+        </Toolbar>
+      </AppBar>
+
       <ProgressWrapper isLoading={isLoading} showContent={hasRepositories}>
-        <List>
-          {items.map((repository, idx) => (
-            <RepositoryItem
-              key={idx}
-              showDivider={idx !== items.length - 1}
-              {...repository}
+        <Styled.SearchResults>
+          <List>
+            {items.map((repository, idx) => (
+              <RepositoryItem
+                key={idx}
+                showDivider={idx !== items.length - 1}
+                {...repository}
+              />
+            ))}
+          </List>
+          {hasRepositories && (
+            <Styled.Pagination
+              {...pagination}
+              labelRowsPerPage={null}
+              labelDisplayedRows={formatLabelDisplayedRows}
             />
-          ))}
-        </List>
-        {hasRepositories && <TablePagination component='div' {...pagination} />}
+          )}
+        </Styled.SearchResults>
       </ProgressWrapper>
     </BaseLayout>
   );

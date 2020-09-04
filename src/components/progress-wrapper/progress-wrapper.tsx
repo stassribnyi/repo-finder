@@ -11,14 +11,14 @@ export const ProgressWrapper: React.FC<ProgressWrapperProps> = ({
   children,
   showContent = false,
 }) => (
-  <>
+  <Styled.Container>
     {isLoading ? (
       <>
-        <Styled.Progress />
+        <Styled.Progress color='secondary' />
         {showContent && children}
       </>
     ) : (
       children
     )}
-  </>
+  </Styled.Container>
 );

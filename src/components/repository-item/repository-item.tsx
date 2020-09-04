@@ -8,8 +8,10 @@ import {
   VisibilityOutlined,
 } from '@material-ui/icons';
 
-import { Styled } from './repository-item.styles';
 import { RepositoryItemProps } from './repository-item.types';
+import { abbreviateNumber } from '../../utils';
+
+import { Styled } from './repository-item.styles';
 
 export const RepositoryItem: React.FC<RepositoryItemProps> = ({
   url,
@@ -47,15 +49,15 @@ export const RepositoryItem: React.FC<RepositoryItemProps> = ({
             <Styled.InfoRow>
               <Styled.ChipWithoutBorder
                 icon={<StarBorderRounded />}
-                label={stars}
+                label={abbreviateNumber(stars)}
               />
               <Styled.ChipWithoutBorder
                 icon={<VisibilityOutlined />}
-                label={watchers}
+                label={abbreviateNumber(watchers)}
               />
               <Styled.ChipWithoutBorder
                 icon={<RestaurantRounded />}
-                label={forks}
+                label={abbreviateNumber(forks)}
               />
             </Styled.InfoRow>
           </>

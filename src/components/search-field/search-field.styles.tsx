@@ -1,31 +1,40 @@
-import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import {
-  Button,
-  ButtonProps,
-  Grid,
-  GridProps,
-  TextField,
-} from '@material-ui/core';
+import { fade, InputBase } from '@material-ui/core';
 
-const GridContainer: React.FC<GridProps> = (props) => (
-  <Grid container {...props} />
-);
-const SearchButton: React.FC<ButtonProps> = (props) => (
-  <Button color='primary' size='small' variant='contained' {...props} />
-);
-
-const Container = styled(GridContainer)`
+const Container = styled.div`
+  margin: 0;
   width: auto;
+
+  display: flex;
+  align-items: center;
+
+  ${({ theme }) => css`
+    padding: 0 ${theme.spacing(1)}px;
+    border-radius: ${theme.shape.borderRadius}px;
+
+    background-color: ${fade(theme.palette.common.white, 0.15)};
+    &:hover {
+      background-color: ${fade(theme.palette.common.white, 0.25)};
+    }
+
+    transition-property: background-color;
+    transition-duration: ${theme.transitions.duration.standard}ms;
+    transition-timing-function: ${theme.transitions.easing.easeOut};
+  `};
 `;
 
-const SearchField = styled(TextField)`
-  margin-right: ${({ theme }) => theme.spacing(2)}px;
+const SearchIcon = styled.div`
+  display: flex;
+`;
+
+const SearchField = styled(InputBase)`
+  color: inherit;
+  margin-left: ${({ theme }) => theme.spacing(1)}px;
 `;
 
 export const Styled = {
   Container,
-  SearchButton,
   SearchField,
+  SearchIcon,
 };

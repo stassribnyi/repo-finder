@@ -6,14 +6,12 @@ import styled, { css } from 'styled-components';
 const GridContainer: React.FC<GridProps> = (props) => (
   <Grid container direction='column' alignItems='center' {...props} />
 );
-const Content: React.FC = (props) => (
-  <GridContainer item md={6} sm={8} xs={12} {...props} />
-);
+const Content: React.FC = (props) => <GridContainer item {...props} />;
 
 const Container = styled(GridContainer)`
   ${({ theme }) => css`
-    margin-top: ${theme.spacing(6)}px;
-    margin-bottom: ${theme.spacing(6)}px;
+    margin: 0 auto;
+    max-width: ${theme.breakpoints.values.laptop}px;
   `};
 `;
 

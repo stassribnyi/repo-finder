@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { InputAdornment } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
 
 import { SearchFieldProps } from './search-field.types';
@@ -8,7 +7,6 @@ import { Styled } from './search-field.styles';
 
 export const SearchField: React.FC<SearchFieldProps> = ({
   disabled,
-  searchText,
   value,
   onSearch,
   className,
@@ -25,40 +23,29 @@ export const SearchField: React.FC<SearchFieldProps> = ({
     [setSearchValue]
   );
 
-  const handleSearch = useCallback(() => onSearch(searchValue || ''), [
-    searchValue,
-    onSearch,
-  ]);
-
   const handleEnterPress: React.KeyboardEventHandler<HTMLInputElement> = useCallback(
     ({ key }) => {
       if (key !== 'Enter') {
         return;
       }
 
-      handleSearch();
+      onSearch(searchValue || '');
     },
-    [handleSearch]
+    [onSearch, searchValue]
   );
 
   return (
     <Styled.Container className={className}>
+      <Styled.SearchIcon>
+        <Search />
+      </Styled.SearchIcon>
       <Styled.SearchField
-        value={searchValue || ''}
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position='start'>
-              <Search />
-            </InputAdornment>
-          ),
-        }}
         {...props}
+        value={searchValue || ''}
+        inputProps={{ 'aria-label': 'search' }}
         onKeyPress={handleEnterPress}
         onChange={handleSearchChange}
       />
-      <Styled.SearchButton disabled={disabled} onClick={handleSearch}>
-        Search
-      </Styled.SearchButton>
     </Styled.Container>
   );
 };
