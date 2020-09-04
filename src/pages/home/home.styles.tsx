@@ -9,7 +9,10 @@ import {
 } from '@material-ui/core';
 import { SearchField as DefaultSearchField } from '../../components';
 
-const Title: React.FC = (props) => <Typography variant='h6' {...props} />;
+const HeaderTitle: React.FC = (props) => <Typography variant='h6' {...props} />;
+const InfoTitle: React.FC = (props) => (
+  <Typography variant='h3' align='center' {...props} />
+);
 const MuiPagination: React.FC<Omit<TablePaginationProps, 'ref'>> = (props) => (
   <MuiTablePagination component='div' {...props} />
 );
@@ -39,9 +42,10 @@ const Pagination = styled(MuiPagination)`
 `;
 
 export const Styled = {
+  HeaderTitle,
   IconButton,
+  InfoTitle,
   Pagination,
   SearchField,
   SearchResults,
-  Title,
 };

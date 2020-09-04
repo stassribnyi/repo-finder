@@ -36,10 +36,10 @@ const HomePage: React.FC = () => {
     <BaseLayout>
       <AppBar position='static'>
         <Toolbar>
-          <Styled.IconButton aria-label='menu'>
+          <Styled.IconButton>
             <GitHub />
           </Styled.IconButton>
-          <Styled.Title>Repo finder</Styled.Title>
+          <Styled.HeaderTitle>Repo finder</Styled.HeaderTitle>
           <Styled.SearchField
             placeholder='Search…'
             value={searchValue}
@@ -68,6 +68,8 @@ const HomePage: React.FC = () => {
             />
           )}
         </Styled.SearchResults>
+
+        {!hasRepositories && <Styled.InfoTitle>No Results</Styled.InfoTitle>}
       </ProgressWrapper>
     </BaseLayout>
   );
