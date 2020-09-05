@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressWrapper should show progress bar alongside with content: content only 1`] = `
+<DocumentFragment>
+  .c0 {
+  width: 100%;
+  position: relative;
+  padding: 8px 0;
+}
+
+<div
+    class="c0"
+  >
+    <p>
+      content only
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ProgressWrapper should show progress bar alongside with content: progress with content 1`] = `
+<DocumentFragment>
+  .c1 {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: calc(100% - 16px);
+}
+
+.c0 {
+  width: 100%;
+  position: relative;
+  padding: 8px 0;
+}
+
+<div
+    class="c0"
+  >
+    <div
+      class="MuiLinearProgress-root MuiLinearProgress-colorSecondary c1 MuiLinearProgress-indeterminate"
+      role="progressbar"
+    >
+      <div
+        class="MuiLinearProgress-bar MuiLinearProgress-barColorSecondary MuiLinearProgress-bar1Indeterminate"
+      />
+      <div
+        class="MuiLinearProgress-bar MuiLinearProgress-bar2Indeterminate MuiLinearProgress-barColorSecondary"
+      />
+    </div>
+    <p>
+      progress with content
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ProgressWrapper should show progress bar: progress without content 1`] = `
+<DocumentFragment>
+  .c1 {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: calc(100% - 16px);
+}
+
+.c0 {
+  width: 100%;
+  position: relative;
+  padding: 8px 0;
+}
+
+<div
+    class="c0"
+  >
+    <div
+      class="MuiLinearProgress-root MuiLinearProgress-colorSecondary c1 MuiLinearProgress-indeterminate"
+      role="progressbar"
+    >
+      <div
+        class="MuiLinearProgress-bar MuiLinearProgress-barColorSecondary MuiLinearProgress-bar1Indeterminate"
+      />
+      <div
+        class="MuiLinearProgress-bar MuiLinearProgress-bar2Indeterminate MuiLinearProgress-barColorSecondary"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
