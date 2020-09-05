@@ -16,7 +16,7 @@ jobs:
         uses: TickX/var-to-dotenv@v1.1.3
         with:
           key: 'REACT_APP_AUTH_TOKEN'
-          value: ${{secrets.GITHUB_TOKEN}}
+          value: ${{secrets.GITHUB_TOKEN}} # TODO: Find solution to use api auth token without immediate expiration
 
       - name: Set .env PUBLIC_URL 🚩
         uses: TickX/var-to-dotenv@v1.1.3
