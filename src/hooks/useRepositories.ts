@@ -7,7 +7,7 @@ import {
   SearchRepositoriesQueryVariables,
 } from '../generated/graphql';
 
-type UseRepositoriesResult = Readonly<{
+export type UseRepositoriesResult = Readonly<{
   isLoading: boolean;
   items: Array<Repository>;
   itemsCount: number;
