@@ -6,19 +6,19 @@ import { FinderThemeProvider } from '../../../theme';
 import { RepositoryItemProps } from '../repository-item.types';
 import { RepositoryItem } from '../repository-item';
 
-afterEach(cleanup);
-
-const repositoryMock: RepositoryItemProps = {
-  uniqueName: 'unique repository name',
-  url: 'http://repository.com/name',
-  description: 'Test description',
-  forks: 123,
-  stars: 234567,
-  watchers: 45579,
-  topics: ['topic1', 'topic2', 'topic3'],
-};
-
 describe('RepositoryItem', () => {
+  const repositoryMock: RepositoryItemProps = {
+    uniqueName: 'unique repository name',
+    url: 'http://repository.com/name',
+    description: 'Test description',
+    forks: 123,
+    stars: 234567,
+    watchers: 45579,
+    topics: ['topic1', 'topic2', 'topic3'],
+  };
+
+  afterEach(cleanup);
+
   it('should contain unique name', async () => {
     // Arrange
     const { getByText } = render(

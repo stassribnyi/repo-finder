@@ -30,6 +30,11 @@ jobs:
           key: 'REACT_APP_GRAPH_URI'
           value: https://api.github.com/graphql
 
+      - name: Test check 🧪
+        run: |
+          npm install
+          npm run test:ci
+
       - name: Install and Build 🔧
         run: |
           npm install

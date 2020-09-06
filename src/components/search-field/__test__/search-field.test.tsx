@@ -4,9 +4,9 @@ import { cleanup, fireEvent, render } from '@testing-library/react';
 import { SearchField } from '../search-field';
 import { FinderThemeProvider } from '../../../theme';
 
-afterEach(cleanup);
-
 describe('SearchField', () => {
+  afterEach(cleanup);
+
   it('should render search field input', async () => {
     // Arrange
     const handleChangeMock = jest.fn((v) => v);

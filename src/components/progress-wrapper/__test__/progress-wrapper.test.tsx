@@ -4,9 +4,9 @@ import { cleanup, render } from '@testing-library/react';
 import { ProgressWrapper } from '../progress-wrapper';
 import { FinderThemeProvider } from '../../../theme';
 
-afterEach(cleanup);
-
 describe('ProgressWrapper', () => {
+  afterEach(cleanup);
+
   it('should show progress bar', async () => {
     // Arrange
     const { asFragment, queryByText } = render(

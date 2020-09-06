@@ -38,6 +38,8 @@
     "prebuild": "npm run generate",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "pretest:ci": "npm run generate",
+    "test:ci": "npm run test -- --detectOpenHandles --watchAll=false --forceExit",
     "eject": "react-scripts eject",
     "generate": "graphql-codegen -r dotenv/config"
   },
