@@ -24,8 +24,8 @@ export const SearchField: React.FC<SearchFieldProps> = ({
   );
 
   const handleEnterPress: React.KeyboardEventHandler<HTMLInputElement> = useCallback(
-    ({ key }) => {
-      if (key !== 'Enter') {
+    ({ key, charCode }) => {
+      if (key !== 'Enter' && charCode !== 13) {
         return;
       }
 
