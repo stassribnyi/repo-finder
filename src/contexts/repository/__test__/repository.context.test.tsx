@@ -94,31 +94,4 @@ describe('RepositoryContext', () => {
     expect(useRepositoriesResult.searchMoreRepos).toHaveBeenCalled();
     expect(element).toBeInTheDocument();
   });
-
-  it('should fail', async () => {
-    // Arrange
-    // useRepositoriesMock.mockReturnValue({
-    //   ...useRepositoriesResult,
-    //   items: [
-    //     {
-    //       uniqueName: 'unique repository name',
-    //       url: '',
-    //       description: '',
-    //       forks: 0,
-    //       stars: 0,
-    //       watchers: 0,
-    //       topics: [],
-    //     },
-    //   ],
-    // });
-    const { getByTitle } = render(<HomePage />);
-
-    // Act
-    const element = getByTitle(/Next page/i);
-    element.click();
-
-    // Assert
-    expect(useRepositoriesResult.searchMoreRepos).toHaveBeenCalled();
-    expect(element).toBeInTheDocument();
-  });
 });
